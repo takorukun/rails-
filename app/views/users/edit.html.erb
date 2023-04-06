@@ -1,5 +1,9 @@
 <h3>予定を編集してください</h3>
 
+<% if flash[:alert] %>
+    <p class="notice"><%= flash[:alert] %></p>
+    <% end %>
+
 <%= form_with model: @user do |f| %>
   <table>
     <tr>
