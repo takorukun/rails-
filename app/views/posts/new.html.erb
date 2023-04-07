@@ -4,7 +4,7 @@
 <p class="notice"><%= flash[:alert] %></p>
 <% end %>
 
-<%= form_with model: @user do |f| %>
+<%= form_with model: @post do |f| %>
   <table>
     <tr>
       <th><%= f.label :title ,"タイトル" %></th>
@@ -35,7 +35,7 @@
   <div>
     <ul>
       <li><%= f.submit "保存"%></li>
-      <li><%= link_to "キャンセル", :users %></li>
+      <li><%= link_to "キャンセル", :posts %></li>
     </ul>
   </div>
 <% end %>

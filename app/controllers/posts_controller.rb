@@ -1,17 +1,17 @@
-class UsersController < ApplicationController
+class PostsController < ApplicationController
   def index
-    @users = User.all
+    @posts = Post.all
   end
 
   def new
-    @user = User.new
+    @post = Post.new
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:title, :startDate, :endDate, :allDay, :memo))
-    if @user.save
+    @post = Post.new(params.require(:post).permit(:title, :startDate, :endDate, :allDay, :memo))
+    if @post.save
       flash[:alert] = "スケジュールを登録しました"
-      redirect_to :users
+      redirect_to :posts
     else
       flash[:alert] = "スケジュールを登録に失敗しました"
       render "new"
@@ -19,18 +19,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(params.require(:user).permit(:title,:startDate,:endDate,:allDay,:memo))
+    @post = Post.find(params[:id])
+    if @post.update(params.require(:post).permit(:title,:startDate,:endDate,:allDay,:memo))
       flash[:alert] = "スケジュールを更新しました"
-      redirect_to :users
+      redirect_to :posts
     else
       flash[:alert] = "スケジュールの更新に失敗しました"
       render "edit"
@@ -38,9 +38,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    @post = Post.find(params[:id])
+    @post.destroy
     flash[:notice] = "予定を削除しました"
-    redirect_to :users
+    redirect_to :posts
   end
 end

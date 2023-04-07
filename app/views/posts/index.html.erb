@@ -4,7 +4,7 @@
     <p class="notice"><%= flash[:alert] %></p>
     <% end %>
 
-    <p><%= link_to "新規追加", :new_user %></p>
+    <p><%= link_to "新規追加", :new_post %></p>
 
     <table>
     <thead>
@@ -22,22 +22,22 @@
     </thead>
 
     <tbody>
-        <% @users.each do |user| %>
+        <% @posts.each do |post| %>
         <tr>
-            <td><%= user.id %></td>
-            <td><%= user.title %></td>
-            <td><%= user.startDate.strftime("%Y年%m月%d日") %></td>
-            <td><%= user.endDate.strftime("%Y年%m月%d日") %></td>
-            <td><%= user.allDay %></td>
-            <td><%= user.updated_at.to_s(:datetime_jp) %></td>
+            <td><%= post.id %></td>
+            <td><%= post.title %></td>
+            <td><%= post.startDate.strftime("%Y年%m月%d日") %></td>
+            <td><%= post.endDate.strftime("%Y年%m月%d日") %></td>
+            <td><%= post.allDay %></td>
+            <td><%= post.updated_at.to_s(:datetime_jp) %></td>
             <td>
-            <%= link_to "詳細", user %>
+            <%= link_to "詳細", post %>
             </td>
             <td>
-            <%= link_to "編集", [:edit,user] %>
+            <%= link_to "編集", [:edit,post] %>
             </td>
             <td>
-            <%= link_to "削除",user,method: :delete, data: {confirm:"予定を削除しますか？"} %>
+            <%= link_to "削除",post,method: :delete, data: {confirm:"予定を削除しますか？"} %>
             </td>
         </tr>
         <% end %>
@@ -45,6 +45,6 @@
     </table>
 
     <div>
-     <p><%= "予定合計 :#{@users.count}件" %></p>
+     <p><%= "予定合計 :#{@posts.count}件" %></p>
      <p><%= "本日の日付 :#{Date.today.strftime("%Y/%m/%d")}" %></p>
     </div>

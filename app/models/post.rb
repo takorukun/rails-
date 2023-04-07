@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Post < ApplicationRecord
     validates :title,length:{in:1..20}
     validates :startDate,presence:true
     validates :endDate,presence:true
